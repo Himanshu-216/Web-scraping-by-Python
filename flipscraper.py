@@ -17,7 +17,7 @@ for phones, price, sp in zip(phone, prices, specs):
     print(pr)
     for i in sp:
         print(i.text)
-    csv_writer.writerow([str(ph),  str(pr)[1:], [j.text for j in sp]])
+    csv_writer.writerow([str(ph),  str(pr)[1:]+f'.00', [j.text for j in sp]])
     
 file.close()
 
