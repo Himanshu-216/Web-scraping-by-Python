@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import csv
+#making a csv file
 file = open('csv_file.csv', 'w')
 csv_writer = csv.writer(file)
 csv_writer.writerow(['Name', 'Price', 'Specifications'])
@@ -12,13 +13,12 @@ specs = soup.findAll('ul', class_= "_1xgFaf")
 
 for phones, price, sp in zip(phone, prices, specs):
     ph, pr = phones.text, price.text
-    # print(phones.text, price.text)
-    # print("Highlights:  \n")
+    
     print(pr)
     for i in sp:
         print(i.text)
     csv_writer.writerow([str(ph),  str(pr)[1:], [j.text for j in sp]])
-    print('\n\n')
+    
 file.close()
 
 
